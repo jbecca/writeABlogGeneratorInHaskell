@@ -28,9 +28,9 @@ el :: String -> String -> String
 el tag content =
     "<" <> tag <> ">" <> content <> "</" <> tag <> ">"
 
-append_ :: Structure -> Structure -> Structure
-append_ (Structure a) (Structure b) =
-    Structure $ a <> b 
+instance Semigroup Structure where
+    (<>) c1 c2 = 
+        Structure (getStructureString c1 <> getStructureString c2)
 
 render :: Html -> String
 render (Html a) = a
